@@ -1,0 +1,14 @@
+build/
+bin/
+obj/
+*.user
+unrar360.xex
+__pycache__/
+site/
+# Fetched by tools/Configure.ps1
+third_party/unrar/
+third_party/*.tar.gz
+# Written by tools/Configure.ps1
+config.json
+config.mk
+config.props

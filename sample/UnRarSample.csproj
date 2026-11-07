@@ -1,0 +1,43 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Silverlight360's folder, as tools\Configure.ps1 found it. -->
+  <Import Project="..\config.props" Condition="Exists('..\config.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D9A6F12-7C4B-4E85-A0D3-5B8E2C1F7A64}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>UnRarSample</RootNamespace>
+    <AssemblyName>UnRarSample</AssemblyName>
+    <SilverlightAppEntry>UnRarSample.App</SilverlightAppEntry>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <!-- Silverlight360, beside this repository's folder, unless config.props says where. -->
+    <XboxSilverlightSdk Condition=" '$(XboxSilverlightSdk)' == '' ">..\..\XboxSilverlightSdk</XboxSilverlightSdk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs"><DependentUpon>App.xaml</DependentUpon></Compile>
+    <Compile Include="MainPage.xaml.cs"><DependentUpon>MainPage.xaml</DependentUpon></Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Silverlight360.UnRAR.dll; the SDK's targets add Silverlight360.Common, for DebugLog and NativeBuffer. -->
+    <ProjectReference Include="..\csharp\Silverlight360.UnRAR.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Built by the Makefile in WSL; the package puts it beside default.xex. -->
+    <Content Include="..\unrar360.xex"><Link>unrar360.xex</Link></Content>
+  </ItemGroup>
+  <Import Project="$(XboxSilverlightSdk)\msbuild\XboxSilverlight.targets" />
+</Project>

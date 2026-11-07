@@ -1,0 +1,34 @@
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!--
+    Silverlight360.UnRAR's C# side as a class library, Silverlight360.UnRAR.dll
+    with its XML documentation: RarExtractor. It uses NativeBuffer from
+    Silverlight360.Common, which the SDK's targets reference. An app references
+    this project (or the DLL from a release) and puts unrar360.xex beside
+    default.xex.
+  -->
+  <!-- Silverlight360's folder, as tools\Configure.ps1 found it. -->
+  <Import Project="..\config.props" Condition="Exists('..\config.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8A3C5E17-4B92-4D06-B1E8-7F2D9C6A0B53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Silverlight360.UnRAR</RootNamespace>
+    <AssemblyName>Silverlight360.UnRAR</AssemblyName>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <XboxLibrary>true</XboxLibrary>
+    <!-- Silverlight360, beside this repository's folder, unless config.props says where. -->
+    <XboxSilverlightSdk Condition=" '$(XboxSilverlightSdk)' == '' ">..\..\XboxSilverlightSdk</XboxSilverlightSdk>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Windows" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="RarExtractor.cs" />
+  </ItemGroup>
+  <Import Project="$(XboxSilverlightSdk)\msbuild\XboxSilverlight.targets" />
+</Project>
