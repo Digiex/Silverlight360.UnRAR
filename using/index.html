@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://digiex.github.io/Silverlight360.UnRAR/using/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Adding it to an app - Silverlight360.UnRAR</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Adding it to an app";
+        var mkdocs_page_input_path = "using.md";
+        var mkdocs_page_url = "/Silverlight360.UnRAR/using/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/powershell.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/csharp.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/bash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/languages/cpp.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Silverlight360.UnRAR
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">Adding it to an app</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#extracting">Extracting</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../api/">API</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../building/">Building</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../testing/">Testing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../limits/">Limits</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../licenses/">Licenses</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../contributing/">Contributing</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../development/">Development</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Silverlight360.UnRAR</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">Adding it to an app</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/Digiex/Silverlight360.UnRAR/edit/master/docs/using.md">Edit on Digiex/Silverlight360.UnRAR</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="adding-it-to-an-app">Adding it to an app<a class="headerlink" href="#adding-it-to-an-app" title="Permanent link">&para;</a></h1>
+<p>An app needs the C# side and the DLL beside <code>default.xex</code>:</p>
+<ul>
+<li><strong><code>Silverlight360.UnRAR.dll</code></strong>, <code>RarExtractor</code>, with <code>Silverlight360.UnRAR.xml</code> beside it for IntelliSense: a reference to the release's DLL, or a <code>ProjectReference</code> to the repository's <code>csharp/Silverlight360.UnRAR.csproj</code>.</li>
+<li><strong><code>unrar360.xex</code></strong>, as <code>Content</code>.</li>
+</ul>
+<p>The C# side uses <code>NativeBuffer</code> from Silverlight360's <a href="https://digiex.github.io/Silverlight360/common-library/">common library</a>, Silverlight360.Common, for the progress the DLL writes. An app built with Silverlight360 references that library already, and its build puts <code>Silverlight360.Common.dll</code> in the package.</p>
+<p>In the app's project, as <code>sample/UnRarSample.csproj</code> has them:</p>
+<pre><code class="language-xml">&lt;ItemGroup&gt;
+  &lt;ProjectReference Include=&quot;..\Silverlight360.UnRAR\csharp\Silverlight360.UnRAR.csproj&quot; /&gt;
+  &lt;!-- or, from a release: &lt;Reference Include=&quot;Silverlight360.UnRAR&quot;&gt;&lt;HintPath&gt;..\Silverlight360.UnRAR\Silverlight360.UnRAR.dll&lt;/HintPath&gt;&lt;/Reference&gt; --&gt;
+&lt;/ItemGroup&gt;
+&lt;ItemGroup&gt;
+  &lt;Content Include=&quot;..\Silverlight360.UnRAR\unrar360.xex&quot;&gt;&lt;Link&gt;unrar360.xex&lt;/Link&gt;&lt;/Content&gt;
+&lt;/ItemGroup&gt;
+</code></pre>
+<p>Ship the release's <code>licenses/unrar.txt</code> and <code>THIRD-PARTY-NOTICES.md</code> with them: <code>unrar360.xex</code> is built from UnRAR's source, under its own license. Silverlight360.UnRAR's own license asks for a visible reference to <a href="https://github.com/Digiex/Silverlight360.UnRAR">https://github.com/Digiex/Silverlight360.UnRAR</a> in the app's documentation, credits or "about" information (see <a href="../licenses/">Licenses</a>).</p>
+<h2 id="extracting">Extracting<a class="headerlink" href="#extracting" title="Permanent link">&para;</a></h2>
+<p><code>Extract</code> blocks until the archive is done, so call it on a thread of its own, never the UI's, and read the progress from the UI's:</p>
+<pre><code class="language-csharp">var rar = new RarExtractor();
+ThreadPool.QueueUserWorkItem(delegate
+{
+    int result = rar.Extract(@&quot;usb:\Downloads\movie.rar&quot;, @&quot;hdd:\Videos\Movie&quot;, null);
+    Deployment.Current.Dispatcher.BeginInvoke(() =&gt;
+        Show(result == RarExtractor.Success ? &quot;Done&quot; : RarExtractor.Describe(result) + &quot;: &quot; + rar.Message));
+    rar.Dispose();
+});
+
+// On a timer on the UI thread:
+Status.Text = rar.FilesDone + &quot; files, &quot; + rar.BytesDone / (1 &lt;&lt; 20) + &quot; MB: &quot; + rar.CurrentFile;
+</code></pre>
+<ul>
+<li><strong>One extraction at a time per extractor.</strong> <code>Cancel</code>, <code>FilesDone</code>, <code>BytesDone</code> and <code>CurrentFile</code> are for other threads.</li>
+<li><strong>Folders are kept</strong> as the archive has them, and those missing are made. A split archive's other volumes must be beside the first.</li>
+<li><strong>A password</strong> goes to <code>Extract</code>; a wrong one returns <code>BadPassword</code>, and none for an encrypted archive <code>MissingPassword</code>.</li>
+<li><strong>The first extraction starts the DLL</strong> with a heap of <code>DefaultHeapBytes</code> (128 MB, reserved and committed as it's used): RAR5's 32 MB dictionary and more. Call <code>RarExtractor.Start(bytes)</code> before the first one for another size; <code>HeapPeak</code> says what an extraction needed (8.4 MB for the test archives).</li>
+<li><strong>The DLL loads at <code>0x8F000000</code>.</strong> In a Silverlight app's process on the console, <code>0x8A000000</code>, <code>0x8C000000</code> and <code>0x8E000000</code> are taken and Silverlight360.Https has <code>0x8D000000</code>, so another DLL of the app's own needs a base of its own. A DllImport of a module that can't load turns into a call through null, which can power the console off, so check a new build loads first (see <a href="../testing/">Testing</a>).</li>
+</ul>
+<p>See <a href="../api/">API</a> for everything an extractor has.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../api/" class="btn btn-neutral float-right" title="API">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+      <p>Silverlight360.UnRAR is licensed under the PolyForm Noncommercial License 1.0.0 with an additional condition; UnRAR keeps its own license. Xbox, Xbox 360 and Silverlight are trademarks of Microsoft.</p>
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/Digiex/Silverlight360.UnRAR" class="fa fa-code-fork" style="color: #fcfcfc"> Digiex/Silverlight360.UnRAR</a>
+        </span>
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../api/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
